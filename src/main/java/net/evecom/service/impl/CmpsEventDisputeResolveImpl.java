@@ -42,6 +42,7 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
     }
     @Override
     public String getFindSql() {
+//        return "select * from S_PTZH_EVENT_DISPUTE_RESOLVE_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
         return "select * from S_PTZH_EVENT_DISPUTE_RESOLVE_V WHERE 1=1";
     }
     @Override
@@ -121,7 +122,7 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
         insertSql += "(" +
                 StringUtils.toSql(data.get("EVENT_NUM")) + "," +
                 StringUtils.toSql(data.get("EVENT_NAME")) + "," +
-                StringUtils.toSql(data.get("HAPPEN_DATE")) + "," +
+                convert2SqlDate(data.get("HAPPEN_DATE")) + "," +
                 StringUtils.toSql(data.get("HAPPEN_PLACE_NAME")) + "," +
                 StringUtils.toSql(data.get("EVENT_SIZE_CODE")) + "," +
                 StringUtils.toSql(data.get("DISPUTE_EVENT_TYPE")) + "," +
@@ -146,9 +147,9 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
                 StringUtils.toSql(data.get("GRID_ORG_NAME")) + "," +
 
 
-                (StringUtils.toSql(data.get("ADD_TIME")) == null ? "sysdate" : "to_date(" + StringUtils.toSql(data.get("ADD_TIME")).replace(".0", "") + ", 'YYYY-MM-DD HH24:MI:SS')") + "," +
-                (StringUtils.toSql(data.get("UPDATE_TIME")) == null ? "sysdate" : "to_date(" + StringUtils.toSql(data.get("UPDATE_TIME")).replace(".0", "") + ", 'YYYY-MM-DD HH24:MI:SS')") + "," +
-                (StringUtils.toSql(data.get("UPLOAD_TIME")) == null ? "sysdate" : "to_date(" + StringUtils.toSql(data.get("UPLOAD_TIME")).replace(".0", "") + ", 'YYYY-MM-DD HH24:MI:SS')") + "," +
+                convert2SqlDate(data.get("ADD_TIME")) + ","+
+                convert2SqlDate(data.get("UPDATE_TIME")) + ","+
+                convert2SqlDate(data.get("UPLOAD_TIME")) + ","+
                 StringUtils.toSql(i) +
                 ")";
 

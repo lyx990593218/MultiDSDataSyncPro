@@ -109,7 +109,7 @@ public class CmpsGridBasicInfoImpl extends BaseServiceImpl implements IDataSync 
                 StringUtils.toSql(data.get("VILLAGE_CODE")) + "," +
                 StringUtils.toSql(data.get("VILLAGE_NAME")) + "," +
 
-                (StringUtils.toSql(data.get("UPLOAD_TIME")) == null ? "sysdate" : "to_date(" + StringUtils.toSql(data.get("UPLOAD_TIME")).replace(".0", "") + ", 'YYYY-MM-DD HH24:MI:SS')") + "," +
+                convert2SqlDate(data.get("UPLOAD_TIME")) + "," +
                 StringUtils.toSql(i) +
                 ")";
 

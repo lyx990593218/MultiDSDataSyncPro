@@ -111,7 +111,7 @@ public class CmpsGridUnitInfoImpl extends BaseServiceImpl implements IDataSync {
                 StringUtils.toSql(data.get("DIVIDE_DATE")) + "," +
                 StringUtils.toSql(data.get("DRAW_UNIT")) + "," +
 
-                (StringUtils.toSql(data.get("UPLOAD_TIME")) == null ? "sysdate" : "to_date(" + StringUtils.toSql(data.get("UPLOAD_TIME")).replace(".0", "") + ", 'YYYY-MM-DD HH24:MI:SS')") + "," +
+                convert2SqlDate(data.get("UPLOAD_TIME")) + "," +
                 StringUtils.toSql(i) +
                 ")";
 

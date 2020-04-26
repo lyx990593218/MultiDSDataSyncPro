@@ -42,6 +42,7 @@ public class CmpsMentalPatientImpl extends BaseServiceImpl implements IDataSync 
     }
     @Override
     public String getFindSql() {
+//        return "select * from S_PTZH_POP_CORRECT_PERSON_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
         return "select * from S_PTZH_POP_CORRECT_PERSON_V WHERE 1=1";
     }
     @Override
@@ -150,9 +151,9 @@ public class CmpsMentalPatientImpl extends BaseServiceImpl implements IDataSync 
                 StringUtils.toSql(data.get("NOTE")) + "," +
 
 
-                (StringUtils.toSql(data.get("ADD_TIME")) == null ? "sysdate" : "to_date(" + StringUtils.toSql(data.get("ADD_TIME")).replace(".0", "") + ", 'YYYY-MM-DD HH24:MI:SS')") + "," +
-                (StringUtils.toSql(data.get("UPDATE_TIME")) == null ? "sysdate" : "to_date(" + StringUtils.toSql(data.get("UPDATE_TIME")).replace(".0", "") + ", 'YYYY-MM-DD HH24:MI:SS')") + "," +
-                (StringUtils.toSql(data.get("UPLOAD_TIME")) == null ? "sysdate" : "to_date(" + StringUtils.toSql(data.get("UPLOAD_TIME")).replace(".0", "") + ", 'YYYY-MM-DD HH24:MI:SS')") + "," +
+                convert2SqlDate(data.get("ADD_TIME")) + ","+
+                convert2SqlDate(data.get("UPDATE_TIME")) + ","+
+                convert2SqlDate(data.get("UPLOAD_TIME")) + ","+
                 StringUtils.toSql(i) +
                 ")";
 
