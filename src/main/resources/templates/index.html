@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>对接</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/js/jquery-3.0.0.min.js}"></script>
+    <script th:src="@{/js/mask.js}"></script>
+</head>
+<body>
+<div id="target"></div><!-- 遮罩层 -->
+<p>对接模块</p>
+<form id='form' action="#" method="post">
+    <div class="col-sm-7">
+        <input type="checkbox" id="allAndNotAll"/>全选/反选<br><br>
+        <input type="checkbox" name="syncData" value="populationsImpl"/><span>户籍人员</span>
+        <input type="checkbox" name="syncData" value="popOverseasPeopleImpl"/><span>境外人员</span>
+        <input type="checkbox" name="syncData" value="popMobilePopulationsImpl"/><span>流动人员</span>
+        <input type="checkbox" name="syncData" value="popLeftBehindsImpl"/><span>留守人员</span>
+        <input type="checkbox" name="syncData" value="mentalPatientsSyncImpl"/><span>精神障碍人员</span>
+        <input type="checkbox" name="syncData" value="aidsPatientsSyncImpl"/><span>艾滋病人员</span>
+        <input type="checkbox" name="syncData" value="drugPopulationSyncImpl"/><span>吸毒人员</span>
+        <input type="checkbox" name="syncData" value="popExPrisonersSyncImpl"/><span>刑满释放</span>
+        <input type="checkbox" name="syncData" value="popCorrectSyncImpl"/><span>社区矫正</span>
+        <input type="checkbox" name="syncData" value="youthImpl"/><span>重点青少年</span><br><br>
+
+        <input type="checkbox" name="syncData" value="locBuildingsImpl"/><span>楼栋</span>
+        <input type="checkbox" name="syncData" value="locRoomsImpl"/><span>房间信息</span>
+        <input type="checkbox" name="syncData" value="evtRentalHouseImpl"/><span>出租房信息</span>
+
+        <input type="checkbox" name="syncData" value="roadGuardLinesImpl"/><span>护路护线</span>
+        <input type="checkbox" name="syncData" value="evtRoadLineCasesImpl"/><span>线路事件</span>
+        <input type="checkbox" name="syncData" value="schoolImpl"/><span>校园及周边重点人群</span>
+        <input type="checkbox" name="syncData" value="evtSchoolCasesImpl"/><span>学校事件</span>
+        <input type="checkbox" name="syncData" value="orgCompsSyncImpl"/><span>综治机构</span>
+        <input type="checkbox" name="syncData" value="orgCompMassesSyncImpl"/><span>群防群治组织</span>
+        <!-- <input type="checkbox" name="syncData"  value="evtResolveConflictSyncImpl"/><span>矛盾纠纷排查</span> -->
+        <input type="checkbox" name="syncData" value="compCentersSyncImpl"/><span>综治中心</span><br><br>
+        <input type="checkbox" name="syncData" value="socialOrgsImpl"/><span>社会组织</span>
+        <input type="checkbox" name="syncData" value="orgVideoCentersSyncImpl"/><span>视联网中心</span>
+        <input type="checkbox" name="syncData" value="gridInfoSyncImpl"/><span>网格信息</span>
+        <input type="checkbox" name="syncData" value="compLeadersSyncImpl"/><span>综治领导责任制</span>
+        <input type="checkbox" name="syncData" value="homicideCaseImpl"/><span>命案防控</span>
+        <input type="checkbox" name="syncData" value="nonPublicOrgImpl"/><span>非公有制经济</span>
+        <input type="checkbox" name="syncData" value="mediationImpl"/><span>矛盾纠纷</span>
+        <input type="checkbox" name="syncData" value="socialSecurityImpl"/><span>重点地区排查整治信息</span>
+        <input type="checkbox" name="syncData" value="evtSeriousCasesSyncImpl"/><span>重特大案件</span><br><br>
+        <input type="checkbox" name="syncData" value="orgCompMgmtTeamsSyncImpl"/><span>综治队伍</span>
+        <input type="checkbox" name="syncData" value="orgCompMassesTeamsSyncImpl"/><span>群防群治队伍</span>
+        <input type="checkbox" name="syncData" value="logisticsSafetyImpl"/><span>寄送物流安全</span><br><br>
+        <input type="checkbox" name="syncData" value="eventStartEvtSyncImpl"/><span>事件上报</span>
+        <input type="checkbox" name="syncData" value="eventFlowTaskSyncImpl"/><span>事件流转</span>
+        <input type="checkbox" name="syncData" value="eventCloseEvtSyncImpl"/><span>事件结案</span>
+        <input type="checkbox" name="syncData" value="eventEvlEvtSyncImpl"/><span>事件归档</span><br><br>
+        <input type="checkbox" name="syncData" value="assessmentSyncImpl"/><span>绩效考核</span><br><br>
+        <input type="checkbox" name="syncData" value="syEnterpriseSyncImpl"/><span>食药企业</span>
+        <input type="checkbox" name="syncData" value="syEnterprisePatrolSyncImpl"/><span>食药企业巡查</span><br><br>
+    </div>
+</form>
+
+<button onclick="run(this);">开始对接</button>
+<div id="msgCtn">
+
+
+</div>
+<script>
+
+
+    $(function () {
+        //全选 反选
+        $("#allAndNotAll").click(function () {
+            var isChecked = $(this).prop("checked");
+            $("input[name='syncData']").prop("checked", isChecked);
+        });
+
+
+    });
+
+    //开始对接
+    function run(obj) {
+        var chkNames = getChkName();
+        if (!chkNames) {
+            alert('请勾选要对接的模块');
+            return;
+        }
+        if (confirm("您确定要对[" + chkNames + "]模块进行数据对接吗？")) {
+            $("#target").openMask("数据传输中，请勿关闭网页。。。。。");
+            $(obj).attr({"disabled": "disabled"});
+            ;
+
+            $.ajax({
+                type: "POST",
+                url: "/syncData",
+                timeout: 60 * 60 * 1000,
+                data: {
+                    dataTypes: getChkVal(),
+                },
+                dataType: "json",
+                success: function (data) {
+                    $("#msgCtn").append(data.errorMsg);
+                    $("#target").closeMask("");
+                    $(obj).removeAttr("disabled");
+                }
+            });
+
+        }
+    }
+
+
+    function getChkVal() {
+        var chkValue = [];//定义一个数组
+        $('input[name="syncData"]:checked').each(function () {
+            chkValue.push($(this).val());
+        });
+        return chkValue.join(",");
+    }
+
+    function getChkName() {
+        var chkName = [];//定义一个数组
+        $('input[name="syncData"]:checked').each(function () {
+            chkName.push($.trim($(this).next().text()));
+        });
+        return chkName.join(",");
+    }
+
+
+</script>
+</body>
+</html>
