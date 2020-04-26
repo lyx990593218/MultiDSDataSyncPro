@@ -87,5 +87,16 @@ public class ScheduledTasks {
         }
         LOG.debug("流动人口定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
     }
+
+    @Scheduled(cron = "${cron.cmps.drugpop}")
+    public void syncDrugPopByCron() throws Exception {
+        LOG.debug("吸毒人员定时任务开始执行->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+
+        IDataSync iDataSync = dataImportFactory.get(DataType.cmpsDrugPop);
+        if (iDataSync != null){
+            iDataSync.syncDatas();
+        }
+        LOG.debug("吸毒人员定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+    }
     
 }

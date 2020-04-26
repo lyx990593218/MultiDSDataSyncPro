@@ -73,6 +73,7 @@ cron:
     pop: 33 18 09 * * ?
     localpop: 33 22 09 * * ?
     flowpop: 33 25 09 * * ?
+    grugpop: 33 25 14 * * ?
 #对接的clienId（正式）
 #sycBaseUrl: http://newapi.fjsq.fj.cegn.cn
 #clientid: 8820178908
