@@ -150,7 +150,6 @@ public class CmpsMentalPatientImpl extends BaseServiceImpl implements IDataSync 
                 StringUtils.toSql(data.get("GRID_ORG_NAME")) + "," +
                 StringUtils.toSql(data.get("NOTE")) + "," +
 
-
                 convert2SqlDate(data.get("ADD_TIME")) + ","+
                 convert2SqlDate(data.get("UPDATE_TIME")) + ","+
                 convert2SqlDate(data.get("UPLOAD_TIME")) + ","+
