@@ -29,7 +29,7 @@ public class CmpsKeyYouthImpl extends BaseServiceImpl implements IDataSync {
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsKeyYouthImpl.class);
 
     /**
      *  省网数据表名

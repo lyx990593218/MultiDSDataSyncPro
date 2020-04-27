@@ -29,7 +29,7 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsEventDisputeResolveImpl.class);
 
     /**
      *  省网数据表名
@@ -129,14 +129,14 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
                 StringUtils.toSql(data.get("INVOLVED_AMOUNT")) + "," +
                 StringUtils.toSql(data.get("EVENT_DESCRIBE")) + "," +
                 StringUtils.toSql(data.get("INVOLVED_UNIT")) + "," +
-                StringUtils.toSql(data.get("RESOLVE_LIMIT_DATE")) + "," +
+                convert2SqlDate(data.get("RESOLVE_LIMIT_DATE")) + "," +
                 StringUtils.toSql(data.get("RESOLVE_WAY_CODE")) + "," +
                 StringUtils.toSql(data.get("RESOLVE_ORG_NAME")) + "," +
                 StringUtils.toSql(data.get("RESOLVE_PERSON_NAME")) + "," +
                 StringUtils.toSql(data.get("RESOLVE_PERSON_CONTACT")) + "," +
                 StringUtils.toSql(data.get("IS_SUCCESS")) + "," +
                 StringUtils.toSql(data.get("RESOLVE_SITUATION")) + "," +
-                StringUtils.toSql(data.get("EXAM_DATE")) + "," +
+                convert2SqlDate(data.get("EXAM_DATE")) + "," +
                 StringUtils.toSql(data.get("EXAM_ADVISE")) + "," +
                 StringUtils.toSql(data.get("LONGITUDE")) + "," +
                 StringUtils.toSql(data.get("LATITUDE")) + "," +

@@ -28,7 +28,7 @@ public class CmpsDurgAddictPopImpl extends BaseServiceImpl implements IDataSync{
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsDurgAddictPopImpl.class);
 
     /**
      *  省网数据表名
@@ -109,7 +109,7 @@ public class CmpsDurgAddictPopImpl extends BaseServiceImpl implements IDataSync{
 
         insertSql += "(" +
                 StringUtils.toSql(data.get("IDENTITY_NUM")) + "," +
-                StringUtils.toSql(data.get("FIRST_FOUND_DATE")) + "," +
+                convert2SqlDate(data.get("FIRST_FOUND_DATE")) + "," +
                 StringUtils.toSql(data.get("CONTROL_SITUATION_CODE")) + "," +
                 StringUtils.toSql(data.get("CONTROLLER_NAME")) + "," +
                 StringUtils.toSql(data.get("CONTROLLER_CONTACT")) + "," +

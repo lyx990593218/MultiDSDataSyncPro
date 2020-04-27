@@ -111,7 +111,7 @@ public class CmpsGridPersonInfoImpl extends BaseServiceImpl implements IDataSync
                 StringUtils.toSql(data.get("SEX_CODE")) + "," +
                 StringUtils.toSql(data.get("NATION_CODE")) + "," +
                 StringUtils.toSql(data.get("POLITICS_CODE")) + "," +
-                StringUtils.toSql(data.get("BIRTHDAY")) + "," +
+                convert2SqlDate(data.get("BIRTHDAY")) + "," +
                 StringUtils.toSql(data.get("EDUCATION_CODE")) + "," +
                 StringUtils.toSql(data.get("CONTACT")) + "," +
 

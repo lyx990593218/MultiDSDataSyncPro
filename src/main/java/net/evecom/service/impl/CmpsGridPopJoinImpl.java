@@ -29,7 +29,7 @@ public class CmpsGridPopJoinImpl extends BaseServiceImpl implements IDataSync {
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsGridPopJoinImpl.class);
 
     /**
      *  省网数据表名
@@ -52,12 +52,12 @@ public class CmpsGridPopJoinImpl extends BaseServiceImpl implements IDataSync {
 
     @Override
     public String getFindTargetSql() {
-        return "SELECT T.* FROM (SELECT TT.*, ROW_NUMBER() OVER (PARTITION BY TT.GRID_NUM ORDER BY TT.UPLOAD_TIME DESC) RN FROM "  + TABLENAME + " TT WHERE GRID_NUM = ?) T WHERE 1 = 1 AND T.RN = 1";
+        return "SELECT T.* FROM (SELECT TT.*, ROW_NUMBER() OVER (PARTITION BY TT.GRID_NUM ORDER BY TT.UPLOAD_TIME DESC) RN FROM "  + TABLENAME + " TT WHERE GRID_NUM = ? AND PERSON_NUM = ?) T WHERE 1 = 1 AND T.RN = 1";
     }
 
     @Override
     public Object[] getFindTargetSqlParams(Map<String, Object> data) {
-        return new Object[]{data.get("GRID_NUM")};
+        return new Object[]{data.get("GRID_NUM"),data.get("PERSON_NUM")};
     }
 
     @Override

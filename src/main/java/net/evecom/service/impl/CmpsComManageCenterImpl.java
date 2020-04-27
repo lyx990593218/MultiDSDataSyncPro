@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * <P><B> Description:  吸毒人员</B></P>
+ * <P><B> Description:  综治中心</B></P>
  * Revision Trail: (Date/Author/Description)
  * a Joe Zhou CREAT
  *
@@ -28,7 +28,7 @@ public class CmpsComManageCenterImpl extends BaseServiceImpl implements IDataSyn
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsComManageCenterImpl.class);
 
     /**
      *  省网数据表名

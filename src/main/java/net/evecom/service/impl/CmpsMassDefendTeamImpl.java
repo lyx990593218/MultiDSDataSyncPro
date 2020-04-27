@@ -29,7 +29,7 @@ public class CmpsMassDefendTeamImpl extends BaseServiceImpl implements IDataSync
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsMassDefendTeamImpl.class);
 
     /**
      *  省网数据表名
@@ -115,7 +115,7 @@ public class CmpsMassDefendTeamImpl extends BaseServiceImpl implements IDataSync
                 StringUtils.toSql(data.get("POLITICS_CODE")) + "," +
                 StringUtils.toSql(data.get("CERT_CODE")) + "," +
                 StringUtils.toSql(data.get("CERT_NUM")) + "," +
-                StringUtils.toSql(data.get("BIRTHDAY")) + "," +
+                convert2SqlDate(data.get("BIRTHDAY")) + "," +
                 StringUtils.toSql(data.get("POST_NAME")) + "," +
                 StringUtils.toSql(data.get("MAJOR_SKILL_CODE")) + "," +
                 StringUtils.toSql(data.get("EDUCATION_CODE")) + "," +

@@ -29,7 +29,7 @@ public class CmpsEmancipistPopImpl extends BaseServiceImpl implements IDataSync 
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsEmancipistPopImpl.class);
 
     /**
      *  省网数据表名
@@ -101,6 +101,7 @@ public class CmpsEmancipistPopImpl extends BaseServiceImpl implements IDataSync 
                 "recrime_name,\n" +
                 "grid_num,\n" +
                 "grid_org_name,\n" +
+
                 "add_time,\n" +
                 "update_time,\n" +
                 "upload_time,\n" +
@@ -116,11 +117,11 @@ public class CmpsEmancipistPopImpl extends BaseServiceImpl implements IDataSync 
                 StringUtils.toSql(data.get("ORIGINAL_CHARGE_CODE")) + "," +
                 StringUtils.toSql(data.get("ORIGINAL_SENTENCE")) + "," +
                 StringUtils.toSql(data.get("PRISON_PLACE")) + "," +
-                StringUtils.toSql(data.get("RELEASE_DATE")) + "," +
+                convert2SqlDate(data.get("RELEASE_DATE")) + "," +
                 StringUtils.toSql(data.get("RISK_ASSESS_TYPE")) + "," +
-                StringUtils.toSql(data.get("JOIN_DATE")) + "," +
+                convert2SqlDate(data.get("JOIN_DATE")) + "," +
                 StringUtils.toSql(data.get("JOIN_SITUATION_CODE")) + "," +
-                StringUtils.toSql(data.get("SETTLE_DATE")) + "," +
+                convert2SqlDate(data.get("SETTLE_DATE")) + "," +
                 StringUtils.toSql(data.get("SETTLE_SITUATION_CODE")) + "," +
                 StringUtils.toSql(data.get("UNSETTLE_REASON")) + "," +
                 StringUtils.toSql(data.get("HELP_SITUATION_CODE")) + "," +

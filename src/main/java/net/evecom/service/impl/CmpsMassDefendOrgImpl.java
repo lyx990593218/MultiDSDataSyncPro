@@ -29,7 +29,7 @@ public class CmpsMassDefendOrgImpl extends BaseServiceImpl implements IDataSync 
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsMassDefendOrgImpl.class);
 
     /**
      *  省网数据表名

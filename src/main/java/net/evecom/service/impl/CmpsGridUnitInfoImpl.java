@@ -108,7 +108,7 @@ public class CmpsGridUnitInfoImpl extends BaseServiceImpl implements IDataSync {
                 StringUtils.toSql(data.get("GRID_HOUSEHOLD_AMOUNT")) + "," +
                 StringUtils.toSql(data.get("GRID_AREA")) + "," +
                 StringUtils.toSql(data.get("MAP_VECTOR_DATA_FILE")) + "," +
-                StringUtils.toSql(data.get("DIVIDE_DATE")) + "," +
+                convert2SqlDate(data.get("DIVIDE_DATE")) + "," +
                 StringUtils.toSql(data.get("DRAW_UNIT")) + "," +
 
                 convert2SqlDate(data.get("UPLOAD_TIME")) + "," +

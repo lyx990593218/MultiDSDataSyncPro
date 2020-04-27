@@ -13,19 +13,24 @@ package net.evecom.service;
 public enum DataType {
 
     /**
-     * 实有人员
+     * 艾滋病危险人员
      */
-    cmpsPop("cmpsPopImpl"),
+    cmpsAidsPop("cmpsAidsPersonImpl"),
 
     /**
-     * 户籍人员
+     * 综治中心
      */
-    cmpsLocalPop("cmpsLocalPopImpl"),
+    cmpsComManageCnter("cmpsComManageCenterImpl"),
 
     /**
-     * 流动人员
+     * 社区矫正
      */
-    cmpsFlowPop("cmpsFlowPopImpl"),
+    cmpsCorrectPop("cmpsCorrectPersonImpl"),
+
+    /**
+     * 吸毒人员
+     */
+    cmpsDrugPop("cmpsDurgAddictPopImpl"),
 
     /**
      * 刑满释放人员
@@ -33,19 +38,19 @@ public enum DataType {
     cmpsEmancipistPop("cmpsEmancipistPopImpl"),
 
     /**
-     * 吸毒人员
+     * 矛盾纠纷排查化解主要当事人
      */
-    cmpsDrugPop("cmpsDrugPopImpl"),
+    cmpsEventDisLitigantInfo("cmpsEventDisLitigantInfoImpl"),
 
     /**
-     * 艾滋病危险人员
+     * 矛盾纠纷排查化解
      */
-    cmpsAdisPop("cmpsAdisPopImpl"),
+    cmpsEventDisputeResolve("cmpsEventDisputeResolveImpl"),
 
     /**
-     * 重点青少年
+     * 流动人员
      */
-    cmpsKeyYouthPop("cmpsKeyYouthPopImpl"),
+    cmpsFlowPop("cmpsFlowPopImpl"),
 
     /**
      * 网格基本信息
@@ -53,11 +58,50 @@ public enum DataType {
     cmpsGridBasicInfo("cmpsGridBasicInfoImpl"),
 
     /**
-     * 社区矫正
+     * 网格人员
      */
-    cmpsCorrectPop("cmpsCorrectPopImpl");
-    
-    
+    cmpsGridPersonInfo("cmpsGridPersonInfoImpl"),
+
+    /**
+     * 重点青少年
+     */
+    cmpsGridPopJoin("cmpsGridPopJoinImpl"),
+
+    /**
+     * 重点青少年
+     */
+    cmpsGridUnitInfo("cmpsGridUnitInfoImpl"),
+
+    /**
+     * 重点青少年
+     */
+    cmpsKeyYouth("cmpsKeyYouthImpl"),
+
+    /**
+     * 户籍人员
+     */
+    cmpsLocalPop("cmpsLocalPopImpl"),
+
+    /**
+     * 群防群治组织
+     */
+    cmpsMassDefendOrg("CmpsMassDefendOrgImpl"),
+
+    /**
+     * 群防群治队伍
+     */
+    cmpsMassDefendTeam("CmpsMassDefendTeamImpl"),
+
+    /**
+     * 肇事肇祸等严重精神障碍患者
+     */
+    cmpsMentalPatient("CmpsMentalPatientImpl"),
+
+    /**
+     * 实有人员
+     */
+    cmpsPop("cmpsPopImpl");
+
     /**
      * 实例名称
      */

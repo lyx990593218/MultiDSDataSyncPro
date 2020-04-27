@@ -353,8 +353,8 @@ public abstract class BaseServiceImpl {
         }else{
             doErrorLog(data.get(getOurPkFieldName()), "有数据");
             // 查询目标数据库有数据，将第一条数据改成删除标志后插回,然后再插入新数据
-//            insertTargetDataSourceMapData(list.get(0), "D");
-//            insertTargetDataSourceMapData(data, "I");
+            insertTargetDataSourceMapData(list.get(0), "D");
+            insertTargetDataSourceMapData(data, "I");
         }
     }
 

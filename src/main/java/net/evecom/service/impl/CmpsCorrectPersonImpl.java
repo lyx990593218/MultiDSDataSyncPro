@@ -29,7 +29,7 @@ public class CmpsCorrectPersonImpl extends BaseServiceImpl implements IDataSync 
     /**
      * The constant LOG.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CmpsCorrectPersonImpl.class);
 
     /**
      *  省网数据表名
@@ -134,10 +134,10 @@ public class CmpsCorrectPersonImpl extends BaseServiceImpl implements IDataSync 
                 StringUtils.toSql(data.get("CASE_TYPE")) + "," +
                 StringUtils.toSql(data.get("CHARGE_NAME")) + "," +
                 StringUtils.toSql(data.get("ORIGINAL_SENTENCE")) + "," +
-                StringUtils.toSql(data.get("SENTENCE_START_DATE")) + "," +
-                StringUtils.toSql(data.get("SENTENCE_END_DATE")) + "," +
-                StringUtils.toSql(data.get("CORRECT_START_DATE")) + "," +
-                StringUtils.toSql(data.get("CORRECT_END_DATE")) + "," +
+                convert2SqlDate(data.get("SENTENCE_START_DATE")) + "," +
+                convert2SqlDate(data.get("SENTENCE_END_DATE")) + "," +
+                convert2SqlDate(data.get("CORRECT_START_DATE")) + "," +
+                convert2SqlDate(data.get("CORRECT_END_DATE")) + "," +
                 StringUtils.toSql(data.get("RECEIVE_WAY_CODE")) + "," +
                 StringUtils.toSql(data.get("FOUR_HISTORY_CODE")) + "," +
                 StringUtils.toSql(data.get("IS_RECIDIVIST")) + "," +

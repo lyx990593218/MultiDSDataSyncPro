@@ -129,11 +129,11 @@ public class CmpsMentalPatientImpl extends BaseServiceImpl implements IDataSync 
                 StringUtils.toSql(data.get("GUARDIAN_IDENTITY_NUM")) + "," +
                 StringUtils.toSql(data.get("GUARDIAN_NAME")) + "," +
                 StringUtils.toSql(data.get("GUARDIAN_CONTACT")) + "," +
-                StringUtils.toSql(data.get("FIRST_ONSET_DATE")) + "," +
+                convert2SqlDate(data.get("FIRST_ONSET_DATE")) + "," +
                 StringUtils.toSql(data.get("NOW_DIAGNOSE_TYPE")) + "," +
                 StringUtils.toSql(data.get("IS_TROUBLE_HISTORY")) + "," +
                 StringUtils.toSql(data.get("TROUBLE_TIMES")) + "," +
-                StringUtils.toSql(data.get("LAST_TROUBLE_DATE")) + "," +
+                convert2SqlDate(data.get("LAST_TROUBLE_DATE")) + "," +
                 StringUtils.toSql(data.get("FIRST_DIAGNOSE_GRADE")) + "," +
                 StringUtils.toSql(data.get("RISK_ASSESS_LEVEL_CODE")) + "," +
                 StringUtils.toSql(data.get("TREAT_SITUATION_CODE")) + "," +
@@ -143,7 +143,7 @@ public class CmpsMentalPatientImpl extends BaseServiceImpl implements IDataSync 
                 StringUtils.toSql(data.get("PARTAKE_MANAGER_CODE")) + "," +
                 StringUtils.toSql(data.get("HELP_SITUATION_CODE")) + "," +
                 StringUtils.toSql(data.get("RECENT_VISIT_TIME")) + "," +
-                StringUtils.toSql(data.get("NEXT_VISIT_DATE")) + "," +
+                convert2SqlDate(data.get("NEXT_VISIT_DATE")) + "," +
                 StringUtils.toSql(data.get("IS_DEAD")) + "," +
                 StringUtils.toSql(data.get("REP_REPAIR_SITUATION")) + "," +
                 StringUtils.toSql(data.get("GRID_NUM")) + "," +
