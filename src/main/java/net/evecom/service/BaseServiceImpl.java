@@ -7,6 +7,7 @@ package net.evecom.service;
 
 import net.evecom.domain.PageList;
 import net.evecom.utils.*;
+import net.evecom.utils.date.DateUtil;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -239,7 +241,7 @@ public abstract class BaseServiceImpl {
     public void doErrorLog(Object data, String errorMsg) {
         try {
             String modelName = getModelName();// 模块名称
-            File logFile = new File(this.errorDatalogs + File.separator + modelName + ".log");
+            File logFile = new File(this.errorDatalogs+ File.separator + DateUtil.dateToString(new Date(), "YYYYMMDD") + File.separator + modelName + ".log");
             File parent = logFile.getParentFile();
             if (!parent.exists())
                 parent.mkdirs();// 不存在创建目录

@@ -70,24 +70,25 @@ logging:
 
 cron:
   cmps:
-#    pop: 33 18 09 * * ?
-#    localpop: 33 22 09 * * ?
-#    flowpop: 33 25 09 * * ?
-    aidsPop: 00 00 17 * * ?
-    comManageCenter: 00 00 17 * * ?
-    correctPerson: 00 00 17 * * ?
-    drugPop: 00 00 17 * * ?
-    emancipistPop: 00 00 17 * * ?
-    eventDisLitigantInfo: 00 00 17 * * ?
-    eventDisputeResolve: 00 00 17 * * ?
-    gridBasicInfo: 00 00 17 * * ?
-    gridPersonInfo: 00 00 17 * * ?
-    gridPopJoin: 00 00 17 * * ?
-    gridUnitInfo: 00 00 17 * * ?
-    keyYouth: 00 00 17 * * ?
-    massDefendOrg: 00 10 17 * * ?
-    massDefendTeam: 00 10 17 * * ?
-    mentalPatient: 00 10 17 * * ?
+    pop: 33 55 17 * * ?
+    localpop: 33 55 17 * * ?
+    flowpop: 33 55 17 * * ?
+
+    aidsPop: 00 55 17 * * ?
+    comManageCenter: 00 55 17 * * ?
+    correctPerson: 00 55 17 * * ?
+    drugPop: 00 55 17 * * ?
+    emancipistPop: 00 55 17 * * ?
+    eventDisLitigantInfo: 00 55 17 * * ?
+    eventDisputeResolve: 00 55 17 * * ?
+    gridBasicInfo: 00 55 17 * * ?
+    gridPersonInfo: 00 55 17 * * ?
+    gridPopJoin: 00 55 17 * * ?
+    gridUnitInfo: 00 55 17 * * ?
+    keyYouth: 00 55 17 * * ?
+    massDefendOrg: 00 55 17 * * ?
+    massDefendTeam: 00 55 17 * * ?
+    mentalPatient: 00 55 17 * * ?
 #对接的clienId（正式）
 #sycBaseUrl: http://newapi.fjsq.fj.cegn.cn
 #clientid: 8820178908

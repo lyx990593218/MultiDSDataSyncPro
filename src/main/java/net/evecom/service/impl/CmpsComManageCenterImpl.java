@@ -41,8 +41,8 @@ public class CmpsComManageCenterImpl extends BaseServiceImpl implements IDataSyn
     }
     @Override
     public String getFindSql() {
-//        return "select * from S_PTZH_GCMC_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
-        return "select * from S_PTZH_GCMC_V WHERE 1=1";
+        return "select * from S_PTZH_GCMC_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
+//        return "select * from S_PTZH_GCMC_V WHERE 1=1";
     }
     @Override
     public Object[] getFindSqlParams() {

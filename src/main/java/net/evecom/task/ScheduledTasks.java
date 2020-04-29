@@ -41,6 +41,47 @@ public class ScheduledTasks {
     @Autowired
     DataSyncFactory dataImportFactory;
 
+    @Scheduled(cron = "${cron.cmps.pop}")
+    public void syncPopByCron() throws Exception {
+        LOG.debug("实有人口定时任务开始执行->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+        /*for(DataType dataType:DataType.values()){
+            // 获取到实现的接口
+            IDataSync iDataSync = dataImportFactory.get(dataType);
+            if (iDataSync != null){
+                iDataSync.syncDatas();
+            }
+        }*/
+
+        IDataSync iDataSync = dataImportFactory.get(DataType.cmpsPop);
+        if (iDataSync != null){
+            iDataSync.syncDatas();
+        }
+        LOG.debug("实有人口定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+    }
+
+
+    @Scheduled(cron = "${cron.cmps.localpop}")
+    public void syncLocalPopByCron() throws Exception {
+        LOG.debug("户籍人口定时任务开始执行->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+
+        IDataSync iDataSync = dataImportFactory.get(DataType.cmpsLocalPop);
+        if (iDataSync != null){
+            iDataSync.syncDatas();
+        }
+        LOG.debug("户籍人口定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+    }
+
+    @Scheduled(cron = "${cron.cmps.flowpop}")
+    public void syncFlowPopByCron() throws Exception {
+        LOG.debug("流动人口定时任务开始执行->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+
+        IDataSync iDataSync = dataImportFactory.get(DataType.cmpsFlowPop);
+        if (iDataSync != null){
+            iDataSync.syncDatas();
+        }
+        LOG.debug("流动人口定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+    }
+
     /**
      *
      * @author Fandy Liu
@@ -124,16 +165,7 @@ public class ScheduledTasks {
         LOG.debug("矛盾纠纷排查化解定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
     }
 
-//    @Scheduled(cron = "${cron.cmps.flowpop}")
-//    public void syncFlowPopByCron() throws Exception {
-//        LOG.debug("流动人口定时任务开始执行->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
-//
-//        IDataSync iDataSync = dataImportFactory.get(DataType.cmpsFlowPop);
-//        if (iDataSync != null){
-//            iDataSync.syncDatas();
-//        }
-//        LOG.debug("流动人口定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
-//    }
+
 
     @Scheduled(cron = "${cron.cmps.gridBasicInfo}")
     public void syncGridBasicInfoByCron() throws Exception {
@@ -190,17 +222,7 @@ public class ScheduledTasks {
         LOG.debug("重点青少年定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
     }
 
-//    @Scheduled(cron = "${cron.cmps.localpop}")
-//    public void syncLocalPopByCron() throws Exception {
-//        LOG.debug("户籍人口定时任务开始执行->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
-//
-//        IDataSync iDataSync = dataImportFactory.get(DataType.cmpsLocalPop);
-//        if (iDataSync != null){
-//            iDataSync.syncDatas();
-//        }
-//        LOG.debug("户籍人口定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
-//    }
-//
+
 
     @Scheduled(cron = "${cron.cmps.massDefendOrg}")
     public void syncMassDefendOrgByCron() throws Exception {
@@ -234,22 +256,5 @@ public class ScheduledTasks {
         }
         LOG.debug("肇事肇祸等严重精神障碍患者定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
     }
-//    @Scheduled(cron = "${cron.cmps.pop}")
-//    public void syncPopByCron() throws Exception {
-//        LOG.debug("实有人口定时任务开始执行->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
-//        /*for(DataType dataType:DataType.values()){
-//            // 获取到实现的接口
-//            IDataSync iDataSync = dataImportFactory.get(dataType);
-//            if (iDataSync != null){
-//                iDataSync.syncDatas();
-//            }
-//        }*/
-//
-//        IDataSync iDataSync = dataImportFactory.get(DataType.cmpsPop);
-//        if (iDataSync != null){
-//            iDataSync.syncDatas();
-//        }
-//        LOG.debug("实有人口定时任务执行结束->执行时间："+DateUtil.dateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS));
-//    }
-//
+
 }

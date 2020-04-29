@@ -42,7 +42,6 @@ public class CmpsEventDisLitigantInfoImpl extends BaseServiceImpl implements IDa
     }
     @Override
     public String getFindSql() {
-        //        return "select * from S_PTZH_EDLI_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
         return "select * from S_PTZH_EDLI_V WHERE 1=1";
     }
     @Override

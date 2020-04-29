@@ -42,8 +42,8 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
     }
     @Override
     public String getFindSql() {
-//        return "select * from S_PTZH_EVENT_DISPUTE_RESOLVE_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
-        return "select * from S_PTZH_EVENT_DISPUTE_RESOLVE_V WHERE 1=1";
+        return "select * from S_PTZH_EVENT_DISPUTE_RESOLVE_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
+//        return "select * from S_PTZH_EVENT_DISPUTE_RESOLVE_V WHERE 1=1";
     }
     @Override
     public Object[] getFindSqlParams() {
