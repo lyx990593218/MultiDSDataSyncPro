@@ -85,22 +85,114 @@ public enum DataType {
     /**
      * 群防群治组织
      */
-    cmpsMassDefendOrg("CmpsMassDefendOrgImpl"),
+    cmpsMassDefendOrg("cmpsMassDefendOrgImpl"),
 
     /**
      * 群防群治队伍
      */
-    cmpsMassDefendTeam("CmpsMassDefendTeamImpl"),
+    cmpsMassDefendTeam("cmpsMassDefendTeamImpl"),
 
     /**
      * 肇事肇祸等严重精神障碍患者
      */
-    cmpsMentalPatient("CmpsMentalPatientImpl"),
+    cmpsMentalPatient("cmpsMentalPatientImpl"),
 
     /**
      * 实有人员
      */
-    cmpsPop("cmpsPopImpl");
+    cmpsPop("cmpsPopImpl"),
+
+
+
+    /**
+     * 艾滋病危险人员
+     */
+    deleteCmpsAidsPop("deleteCmpsAidsPersonImpl"),
+
+    /**
+     * 综治中心
+     */
+    deleteCmpsComManageCnter("deleteCmpsComManageCenterImpl"),
+
+    /**
+     * 社区矫正
+     */
+    deleteCmpsCorrectPop("deleteCmpsCorrectPersonImpl"),
+
+    /**
+     * 吸毒人员
+     */
+    deleteCmpsDrugPop("deleteCmpsDurgAddictPopImpl"),
+
+    /**
+     * 刑满释放人员
+     */
+    deleteCmpsEmancipistPop("deleteCmpsEmancipistPopImpl"),
+
+    /**
+     * 矛盾纠纷排查化解主要当事人
+     */
+    deleteCmpsEventDisLitigantInfo("deleteCmpsEventDisLitigantInfoImpl"),
+
+    /**
+     * 矛盾纠纷排查化解
+     */
+    deleteCmpsEventDisputeResolve("deleteCmpsEventDisputeResolveImpl"),
+
+    /**
+     * 流动人员
+     */
+    deleteCmpsFlowPop("deleteCmpsFlowPopImpl"),
+
+    /**
+     * 网格基本信息
+     */
+    deleteCmpsGridBasicInfo("deleteCmpsGridBasicInfoImpl"),
+
+    /**
+     * 网格人员
+     */
+    deleteCmpsGridPersonInfo("deleteCmpsGridPersonInfoImpl"),
+
+    /**
+     * 重点青少年
+     */
+    deleteCmpsGridPopJoin("deleteCmpsGridPopJoinImpl"),
+
+    /**
+     * 重点青少年
+     */
+    deleteCmpsGridUnitInfo("deleteCmpsGridUnitInfoImpl"),
+
+    /**
+     * 重点青少年
+     */
+    deleteCmpsKeyYouth("deleteCmpsKeyYouthImpl"),
+
+    /**
+     * 户籍人员
+     */
+    deleteCmpsLocalPop("deleteCmpsLocalPopImpl"),
+
+    /**
+     * 群防群治组织
+     */
+    deleteCmpsMassDefendOrg("deleteCmpsMassDefendOrgImpl"),
+
+    /**
+     * 群防群治队伍
+     */
+    deleteCmpsMassDefendTeam("deleteCmpsMassDefendTeamImpl"),
+
+    /**
+     * 肇事肇祸等严重精神障碍患者
+     */
+    deleteCmpsMentalPatient("deleteCmpsMentalPatientImpl"),
+
+    /**
+     * 实有人员
+     */
+    deleteCmpsPop("deleteCmpsPopImpl");
 
     /**
      * 实例名称

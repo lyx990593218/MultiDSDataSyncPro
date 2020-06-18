@@ -241,7 +241,7 @@ public abstract class BaseServiceImpl {
     public void doErrorLog(Object data, String errorMsg) {
         try {
             String modelName = getModelName();// 模块名称
-            File logFile = new File(this.errorDatalogs+ File.separator + DateUtil.dateToString(new Date(), "YYYYMMDD") + File.separator + modelName + ".log");
+            File logFile = new File(this.errorDatalogs+ File.separator + DateUtil.dateToString(new Date(), "yyyy-MM-dd") + File.separator + modelName + ".log");
             File parent = logFile.getParentFile();
             if (!parent.exists())
                 parent.mkdirs();// 不存在创建目录

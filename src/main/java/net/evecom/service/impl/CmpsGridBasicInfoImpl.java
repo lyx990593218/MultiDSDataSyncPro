@@ -34,7 +34,7 @@ public class CmpsGridBasicInfoImpl extends BaseServiceImpl implements IDataSync 
     /**
      *  省网数据表名
      */
-    private static String TABLENAME = "PINGTAN.S_PTZH_GRID_GRID_BASIC_INFO";
+    private static String TABLENAME = "S_PTZH_GRID_GRID_BASIC_INFO";
 
     @Override
     public String  syncDatas() throws Exception {
@@ -42,7 +42,7 @@ public class CmpsGridBasicInfoImpl extends BaseServiceImpl implements IDataSync 
     }
     @Override
     public String getFindSql() {
-        return "select * from S_PTZH_GRID_GRID_BASIC_INFO_V WHERE 1=1";
+        return "select * from "+TABLENAME+"_V WHERE 1=1";
     }
     @Override
     public Object[] getFindSqlParams() {
@@ -52,7 +52,7 @@ public class CmpsGridBasicInfoImpl extends BaseServiceImpl implements IDataSync 
 
     @Override
     public String getFindTargetSql() {
-        return "SELECT T.* FROM (SELECT TT.*, ROW_NUMBER() OVER (PARTITION BY TT.GRID_NUM ORDER BY TT.UPLOAD_TIME DESC) RN FROM "  + TABLENAME + " TT WHERE GRID_NUM = ?) T WHERE 1 = 1 AND T.RN = 1";
+        return "SELECT T.* FROM (SELECT TT.*, ROW_NUMBER() OVER (PARTITION BY TT.GRID_NUM ORDER BY TT.UPLOAD_TIME DESC) RN FROM PINGTAN."  + TABLENAME + " TT WHERE GRID_NUM = ?) T WHERE 1 = 1 AND T.RN = 1";
     }
 
     @Override
@@ -80,7 +80,7 @@ public class CmpsGridBasicInfoImpl extends BaseServiceImpl implements IDataSync 
 
     @Override
     protected void insertTargetDataSourceMapData(Map<String, Object> data, String i) {
-        String insertSql = "insert into " + TABLENAME;
+        String insertSql = "insert into PINGTAN." + TABLENAME;
 
         insertSql += "(" +
 

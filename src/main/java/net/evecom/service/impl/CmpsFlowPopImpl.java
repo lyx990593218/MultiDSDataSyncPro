@@ -10,6 +10,7 @@ import net.evecom.service.IDataSync;
 import net.evecom.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -29,13 +30,21 @@ public class CmpsFlowPopImpl extends BaseServiceImpl implements IDataSync {
      */
     private static final Logger LOG = LoggerFactory.getLogger(CmpsFlowPopImpl.class);
 
+    @Value("${daysRangeEdge.flowpop}")
+    private String daysRangeEdge;
+
+    /**
+     *  省网数据表名
+     */
+    private static String TABLENAME = "S_PTZH_POP_FLOW_PERSON";
+
     @Override
     public String  syncDatas() throws Exception {
         return super.run();
     }
     @Override
     public String getFindSql() {
-       return "select * from S_PTZH_POP_FLOW_PERSON WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
+       return "select * from "+TABLENAME+" WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD'))";
 //       return "select * from S_PTZH_POP_FLOW_PERSON WHERE 1=1";
     }
     @Override
@@ -46,7 +55,7 @@ public class CmpsFlowPopImpl extends BaseServiceImpl implements IDataSync {
 
     @Override
     public String getFindTargetSql() {
-        return "SELECT T.* FROM (SELECT TT.*, ROW_NUMBER() OVER (PARTITION BY TT.IDENTITY_NUM ORDER BY TT.UPLOAD_TIME DESC) RN FROM PINGTAN.S_PTZH_POP_FLOW_PERSON TT WHERE IDENTITY_NUM = ?) T WHERE 1 = 1 AND T.RN = 1";
+        return "SELECT T.* FROM (SELECT TT.*, ROW_NUMBER() OVER (PARTITION BY TT.IDENTITY_NUM ORDER BY TT.UPLOAD_TIME DESC) RN FROM PINGTAN."+TABLENAME+" TT WHERE IDENTITY_NUM = ?) T WHERE 1 = 1 AND T.RN = 1";
     }
 
     @Override
@@ -74,7 +83,7 @@ public class CmpsFlowPopImpl extends BaseServiceImpl implements IDataSync {
 
     @Override
     protected void insertTargetDataSourceMapData(Map<String, Object> data, String i) {
-        String insertSql = "insert into pingtan.S_PTZH_POP_FLOW_PERSON";
+        String insertSql = "insert into pingtan." + TABLENAME;
         insertSql += "(IDENTITY_NUM\n" +
                 ",EMIGRATE_DATE\n" +
                 ",INFLOW_REASON_CODE\n" +

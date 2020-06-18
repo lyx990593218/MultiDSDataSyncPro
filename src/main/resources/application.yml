@@ -62,7 +62,7 @@ spring:
       time-between-eviction-runs-millis: 18800
 #日志配置
 logging:
-  path: d:\\syncDatalogs
+  path: d:\\dataSync\\syncDatalogs
   level:
     net.evecom.service.impl: DEBUG
     org.springframework: INFO
@@ -70,25 +70,66 @@ logging:
 
 cron:
   cmps:
-    pop: 33 55 17 * * ?
-    localpop: 33 55 17 * * ?
-    flowpop: 33 55 17 * * ?
+    pop: 33 37 09 * * ?
+    localpop: 33 55 10 * * ?
+    flowpop: 33 55 10 * * ?
 
-    aidsPop: 00 55 17 * * ?
-    comManageCenter: 00 55 17 * * ?
-    correctPerson: 00 55 17 * * ?
-    drugPop: 00 55 17 * * ?
-    emancipistPop: 00 55 17 * * ?
-    eventDisLitigantInfo: 00 55 17 * * ?
-    eventDisputeResolve: 00 55 17 * * ?
-    gridBasicInfo: 00 55 17 * * ?
-    gridPersonInfo: 00 55 17 * * ?
-    gridPopJoin: 00 55 17 * * ?
-    gridUnitInfo: 00 55 17 * * ?
-    keyYouth: 00 55 17 * * ?
-    massDefendOrg: 00 55 17 * * ?
-    massDefendTeam: 00 55 17 * * ?
-    mentalPatient: 00 55 17 * * ?
+    aidsPop: 00 55 10 * * ?
+    comManageCenter: 00 55 10 * * ?
+    correctPerson: 00 55 10 * * ?
+    drugPop: 00 55 10 * * ?
+    emancipistPop: 00 55 10 * * ?
+    eventDisLitigantInfo: 00 55 10 * * ?
+    eventDisputeResolve: 00 55 10 * * ?
+    gridBasicInfo: 00 00 01 1 * ?
+    gridPersonInfo: 00 00 01 1 * ?
+    gridPopJoin: 00 00 01 1 * ?
+    gridUnitInfo: 00 00 01 1 * ?
+    keyYouth: 00 55 10 * * ?
+    massDefendOrg: 00 55 10 * * ?
+    massDefendTeam: 00 47 16 * * ?
+    mentalPatient: 00 55 10 * * ?
+  delcmps:
+    pop: 0 10 3 ? * 2
+    localpop: 0 10 4 ? * 2
+    flowpop: 0 10 5 ? * 2
+
+    aidsPop: 0 10 2 ? * 2
+    comManageCenter: 0 10 2 ? * 2
+    correctPerson: 0 10 2 ? * 2
+    drugPop: 0 10 2 ? * 2
+    emancipistPop: 0 10 2 ? * 2
+    eventDisLitigantInfo: 0 10 2 ? * 2
+    eventDisputeResolve: 0 10 2 ? * 2
+    gridBasicInfo: 0 10 2 ? * 2
+    gridPersonInfo: 0 10 2 ? * 2
+    gridPopJoin: 0 10 2 ? * 2
+    gridUnitInfo: 0 10 2 ? * 2
+    keyYouth: 0 10 2 ? * 2
+    massDefendOrg: 0 10 2 ? * 2
+    massDefendTeam: 0 10 2 ? * 2
+    mentalPatient: 0 10 2 ? * 2
+
+daysRangeEdge:
+  pop: 1
+  localpop: 1
+  flowpop: 1
+
+  aidsPop: 1
+  comManageCenter: 1
+  correctPerson: 1
+  drugPop: 1
+  emancipistPop: 1
+  eventDisLitigantInfo: 1
+  eventDisputeResolve: 1
+  gridBasicInfo: 00 00 01 1 * ?
+  gridPersonInfo: 00 00 01 1 * ?
+  gridPopJoin: 00 00 01 1 * ?
+  gridUnitInfo: 00 00 01 1 * ?
+  keyYouth: 1
+  massDefendOrg: 1
+  massDefendTeam: 1
+  mentalPatient: 1
 #对接的clienId（正式）
 #sycBaseUrl: http://newapi.fjsq.fj.cegn.cn
 #clientid: 8820178908
@@ -115,6 +156,6 @@ cmpsDomain2: http://110.85.58.153:7020/emnh
 #一次性对接多少
 onceSyncRows: 100
 #错误日志位置
-errorDatalogs:  d:\\errorDatalogs
+errorDatalogs:  d:\\dataSync\\errorDatalogs
 #网格文件地址
 gridPath:

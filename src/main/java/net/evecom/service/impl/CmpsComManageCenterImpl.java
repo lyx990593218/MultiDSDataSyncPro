@@ -9,6 +9,7 @@ import net.evecom.service.IDataSync;
 import net.evecom.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -30,6 +31,9 @@ public class CmpsComManageCenterImpl extends BaseServiceImpl implements IDataSyn
      */
     private static final Logger LOG = LoggerFactory.getLogger(CmpsComManageCenterImpl.class);
 
+    @Value("${daysRangeEdge.comManageCenter}")
+    private String daysRangeEdge;
+
     /**
      *  省网数据表名
      */
@@ -41,7 +45,7 @@ public class CmpsComManageCenterImpl extends BaseServiceImpl implements IDataSyn
     }
     @Override
     public String getFindSql() {
-        return "select * from S_PTZH_GCMC_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD'))";
+        return "select * from S_PTZH_GCMC_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD'))";
 //        return "select * from S_PTZH_GCMC_V WHERE 1=1";
     }
     @Override
