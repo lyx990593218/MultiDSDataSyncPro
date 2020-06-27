@@ -68,6 +68,50 @@ logging:
     org.springframework: INFO
     org.spring.springboot.dao: DEBUG
 
+## 定时任务开关按钮 open/close
+taskSwitch:
+  cmps:
+    pop: open
+    localpop: open
+    flowpop: open
+
+    aidsPop: open
+    comManageCenter: open
+    correctPerson: open
+    drugPop: open
+    emancipistPop: open
+    eventDisLitigantInfo: open
+    eventDisputeResolve: open
+    gridBasicInfo: open
+    gridPersonInfo: open
+    gridPopJoin: open
+    gridUnitInfo: open
+    keyYouth: open
+    massDefendOrg: open
+    massDefendTeam: open
+    mentalPatient: open
+  delcmps:
+    pop: open
+    localpop: open
+    flowpop: open
+
+    aidsPop: open
+    comManageCenter: open
+    correctPerson: open
+    drugPop: open
+    emancipistPop: open
+    eventDisLitigantInfo: open
+    eventDisputeResolve: open
+    gridBasicInfo: open
+    gridPersonInfo: open
+    gridPopJoin: open
+    gridUnitInfo: open
+    keyYouth: open
+    massDefendOrg: open
+    massDefendTeam: open
+    mentalPatient: open
+
+## 定时任务表达式配置项
 cron:
   cmps:
     pop: 33 37 09 * * ?
@@ -89,7 +133,7 @@ cron:
     massDefendOrg: 00 55 10 * * ?
     massDefendTeam: 00 47 16 * * ?
     mentalPatient: 00 55 10 * * ?
-  delcmps:
+  delcmps:        ## 每周一执行删除功能
     pop: 0 10 3 ? * 2
     localpop: 0 10 4 ? * 2
     flowpop: 0 10 5 ? * 2
@@ -110,6 +154,7 @@ cron:
     massDefendTeam: 0 10 2 ? * 2
     mentalPatient: 0 10 2 ? * 2
 
+# 查询过去多少天（现设为过去1天的数据）
 daysRangeEdge:
   pop: 1
   localpop: 1
@@ -122,10 +167,24 @@ daysRangeEdge:
   emancipistPop: 1
   eventDisLitigantInfo: 1
   eventDisputeResolve: 1
-  gridBasicInfo: 00 00 01 1 * ?
-  gridPersonInfo: 00 00 01 1 * ?
-  gridPopJoin: 00 00 01 1 * ?
-  gridUnitInfo: 00 00 01 1 * ?
+  keyYouth: 1
+  massDefendOrg: 1
+  massDefendTeam: 1
+  mentalPatient: 1
+
+# 全表新增-开关（有时间为null的）
+sysDebug:
+  pop: 1
+  localpop: 1
+  flowpop: 1
+
+  aidsPop: 1
+  comManageCenter: 1
+  correctPerson: 1
+  drugPop: 1
+  emancipistPop: 1
+  eventDisLitigantInfo: 1
+  eventDisputeResolve: 1
   keyYouth: 1
   massDefendOrg: 1
   massDefendTeam: 1

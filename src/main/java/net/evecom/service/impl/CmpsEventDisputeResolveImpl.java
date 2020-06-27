@@ -35,6 +35,9 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
     @Value("${daysRangeEdge.eventDisputeResolve}")
     private String daysRangeEdge;
 
+    @Value("${sysDebug.eventDisputeResolve}")
+    private boolean sysDebug;
+
     /**
      *  省网数据表名
      */
@@ -46,8 +49,11 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
     }
     @Override
     public String getFindSql() {
-        return "select * from "+TABLENAME+"_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD'))";
-//        return "select * from S_PTZH_EVENT_DISPUTE_RESOLVE_V WHERE 1=1";
+        if (sysDebug){
+            return "select * from S_PTZH_EVENT_DISPUTE_RESOLVE_V WHERE 1=1";
+        }else {
+            return "select * from " + TABLENAME + "_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - " + daysRangeEdge + ", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - " + daysRangeEdge + ", 'YYYY-MM-DD'))";
+        }
     }
     @Override
     public Object[] getFindSqlParams() {
@@ -117,7 +123,7 @@ public class CmpsEventDisputeResolveImpl extends BaseServiceImpl implements IDat
                 "add_time,\n" +
                 "update_time,\n" +
                 "upload_time,\n" +
-                "upload_status," +
+                "upload_status" +
 
                 ")\n";
 

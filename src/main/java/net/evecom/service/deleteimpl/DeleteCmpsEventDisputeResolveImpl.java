@@ -114,7 +114,7 @@ public class DeleteCmpsEventDisputeResolveImpl extends DeleteBaseServiceImpl imp
                 "add_time,\n" +
                 "update_time,\n" +
                 "upload_time,\n" +
-                "upload_status," +
+                "upload_status" +
 
                 ")\n";
 

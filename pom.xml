@@ -46,9 +46,9 @@
 		<!-- oracle -->
 		<!-- https://mvnrepository.com/artifact/com.oracle/ojdbc7 -->
 		<dependency>
-		    <groupId>com.oracle</groupId>
-		    <artifactId>ojdbc7</artifactId>
-		    <version>12.1.0.2.0</version>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>12.1.0.2.0</version>
 		</dependency>
 		<!-- excel导入工具类 -->
 		<dependency>

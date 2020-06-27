@@ -37,6 +37,9 @@ public class CmpsLocalPopImpl extends BaseServiceImpl implements IDataSync {
     @Value("${daysRangeEdge.localpop}")
     private String daysRangeEdge;
 
+    @Value("${sysDebug.localpop}")
+    private boolean sysDebug;
+
     /**
      *  省网数据表名
      */
@@ -48,8 +51,11 @@ public class CmpsLocalPopImpl extends BaseServiceImpl implements IDataSync {
     }
     @Override
     public String getFindSql() {
-       return "select * from "+TABLENAME+" WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD'))";
-//       return "select * from S_PTZH_POP_LOCAL_REGIST_POP WHERE 1=1";
+        if (sysDebug){
+            return "select * from S_PTZH_POP_LOCAL_REGIST_POP WHERE 1=1";
+        }else {
+            return "select * from "+TABLENAME+" WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD'))";
+        }
     }
     @Override
     public Object[] getFindSqlParams() {

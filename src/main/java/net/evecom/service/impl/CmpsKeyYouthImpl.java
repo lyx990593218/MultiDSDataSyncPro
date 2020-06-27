@@ -35,6 +35,9 @@ public class CmpsKeyYouthImpl extends BaseServiceImpl implements IDataSync {
     @Value("${daysRangeEdge.keyYouth}")
     private String daysRangeEdge;
 
+    @Value("${sysDebug.keyYouth}")
+    private boolean sysDebug;
+
     /**
      *  省网数据表名
      */
@@ -46,8 +49,11 @@ public class CmpsKeyYouthImpl extends BaseServiceImpl implements IDataSync {
     }
     @Override
     public String getFindSql() {
-        return "select * from "+TABLENAME+"_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD'))";
-//        return "select * from S_PTZH_POP_KEY_YOUTH_V WHERE 1=1";
+        if (sysDebug){
+            return "select * from S_PTZH_POP_KEY_YOUTH_V WHERE 1=1";
+        }else {
+            return "select * from "+TABLENAME+"_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - "+daysRangeEdge+", 'YYYY-MM-DD'))";
+        }
     }
     @Override
     public Object[] getFindSqlParams() {
