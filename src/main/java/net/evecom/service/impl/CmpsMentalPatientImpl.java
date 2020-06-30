@@ -91,7 +91,7 @@ public class CmpsMentalPatientImpl extends BaseServiceImpl implements IDataSync 
 
     @Override
     protected void insertTargetDataSourceMapData(Map<String, Object> data, String i) {
-        String insertSql = "insert into " + TABLENAME;
+        String insertSql = "insert into PINGTAN." + TABLENAME;
 
         insertSql += "(" +
 

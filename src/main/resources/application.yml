@@ -174,21 +174,21 @@ daysRangeEdge:
 
 # 全表新增-开关（有时间为null的）
 sysDebug:
-  pop: 1
-  localpop: 1
-  flowpop: 1
+  pop: true
+  localpop: true
+  flowpop: true
 
-  aidsPop: 1
-  comManageCenter: 1
-  correctPerson: 1
-  drugPop: 1
-  emancipistPop: 1
-  eventDisLitigantInfo: 1
-  eventDisputeResolve: 1
-  keyYouth: 1
-  massDefendOrg: 1
-  massDefendTeam: 1
-  mentalPatient: 1
+  aidsPop: true
+  comManageCenter: true
+  correctPerson: true
+  drugPop: true
+  emancipistPop: true
+  eventDisLitigantInfo: true
+  eventDisputeResolve: true
+  keyYouth: true
+  massDefendOrg: true
+  massDefendTeam: true
+  mentalPatient: true
 #对接的clienId（正式）
 #sycBaseUrl: http://newapi.fjsq.fj.cegn.cn
 #clientid: 8820178908
