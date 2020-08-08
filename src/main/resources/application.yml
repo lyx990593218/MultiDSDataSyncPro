@@ -9,7 +9,6 @@ server:
     max-threads: 200
     # Tomcat启动初始化的线程数，默认值25
     min-spare-threads: 25
-
 #spring 环境配置
 spring:
   thymeleaf: 
@@ -42,6 +41,7 @@ spring:
       max-wait: 10000
       min-idle: 5
       initial-size: 5
+      max-active: 20   # 定义最大连接数 未配置或配置为0 无限制
       validation-query: SELECT 1 FROM DUAL
       test-on-borrow: false
       test-while-idle: true
@@ -56,10 +56,12 @@ spring:
       max-wait: 10000
       min-idle: 5
       initial-size: 5
+      max-active: 20   # 定义最大连接数 未配置或配置为0 无限制
       validation-query: SELECT 1 FROM DUAL
       test-on-borrow: false
       test-while-idle: true
       time-between-eviction-runs-millis: 18800
+
 #日志配置
 logging:
   path: d:\\dataSync\\syncDatalogs
@@ -167,6 +169,10 @@ daysRangeEdge:
   emancipistPop: 1
   eventDisLitigantInfo: 1
   eventDisputeResolve: 1
+  gridBasicInfo: 1
+  gridPersonInfo: 1
+  gridPopJoin: 1
+  gridUnitInfo: 1
   keyYouth: 1
   massDefendOrg: 1
   massDefendTeam: 1
@@ -174,21 +180,25 @@ daysRangeEdge:
 
 # 全表新增-开关（有时间为null的）
 sysDebug:
-  pop: true
-  localpop: true
-  flowpop: true
+  pop: false
+  localpop: false
+  flowpop: false
 
-  aidsPop: true
-  comManageCenter: true
-  correctPerson: true
-  drugPop: true
-  emancipistPop: true
-  eventDisLitigantInfo: true
-  eventDisputeResolve: true
-  keyYouth: true
-  massDefendOrg: true
-  massDefendTeam: true
-  mentalPatient: true
+  aidsPop: false
+  comManageCenter: false
+  correctPerson: false
+  drugPop: false
+  emancipistPop: false
+  eventDisLitigantInfo: false
+  eventDisputeResolve: false
+  gridBasicInfo: false
+  gridPersonInfo: false
+  gridPopJoin: false
+  gridUnitInfo: false
+  keyYouth: false
+  massDefendOrg: false
+  massDefendTeam: false
+  mentalPatient: false
 #对接的clienId（正式）
 #sycBaseUrl: http://newapi.fjsq.fj.cegn.cn
 #clientid: 8820178908

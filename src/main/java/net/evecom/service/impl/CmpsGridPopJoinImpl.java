@@ -10,6 +10,7 @@ import net.evecom.service.IDataSync;
 import net.evecom.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -36,13 +37,23 @@ public class CmpsGridPopJoinImpl extends BaseServiceImpl implements IDataSync {
      */
     private static String TABLENAME = "S_PTZH_GRID_POP_JOIN";
 
+    @Value("${daysRangeEdge.eventDisLitigantInfo}")
+    private String daysRangeEdge;
+
+    @Value("${sysDebug.eventDisLitigantInfo}")
+    private boolean sysDebug;
+
     @Override
     public String  syncDatas() throws Exception {
         return super.run();
     }
     @Override
     public String getFindSql() {
-        return "select * from "+TABLENAME+"_V WHERE 1=1";
+        if(sysDebug){
+            return "select * from " + TABLENAME + "_V WHERE 1=1";
+        }else {
+            return "select * from " + TABLENAME + "_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - " + daysRangeEdge + ", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - " + daysRangeEdge + ", 'YYYY-MM-DD'))";
+        }
     }
     @Override
     public Object[] getFindSqlParams() {

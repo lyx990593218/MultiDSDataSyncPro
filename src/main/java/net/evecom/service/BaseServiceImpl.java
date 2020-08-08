@@ -251,7 +251,7 @@ public abstract class BaseServiceImpl {
             if (errorMsg == null) {
                 appendMsg = data.toString() + "\n";
             } else {
-                appendMsg = StringUtils.format("数据:{}发生错误，错误原因:{};\n", data.toString(), errorMsg);
+                appendMsg = StringUtils.format("数据:{}触发操作，原因:{};\n", data.toString(), errorMsg);
 
             }
             FileUtils.writeStringToFile(logFile, appendMsg, "UTF-8", true);
@@ -350,12 +350,12 @@ public abstract class BaseServiceImpl {
 
         if (list == null || list.size() < 1){
             // 查询目标数据库无数据，直接插入
-            doErrorLog(data.get(getOurPkFieldName()), "无数据");
+            doErrorLog(data.get(getOurPkFieldName()), "无数据，新增数据");
             insertTargetDataSourceMapData(data, "I");
         }else{
-            doErrorLog(data.get(getOurPkFieldName()), "有数据");
+            doErrorLog(data.get(getOurPkFieldName()), "有数据， 覆盖原有数据");
             // 查询目标数据库有数据，将第一条数据改成删除标志后插回,然后再插入新数据
-            insertTargetDataSourceMapData(list.get(0), "D");
+//            insertTargetDataSourceMapData(list.get(0), "D");
             insertTargetDataSourceMapData(data, "I");
         }
     }

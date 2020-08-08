@@ -250,7 +250,7 @@ public abstract class DeleteBaseServiceImpl {
             if (errorMsg == null) {
                 appendMsg = data.toString() + "\n";
             } else {
-                appendMsg = StringUtils.format("数据:{}发生错误，错误原因:{};\n", data.toString(), errorMsg);
+                appendMsg = StringUtils.format("数据:{}触发操作，原因:{};\n", data.toString(), errorMsg);
 
             }
             FileUtils.writeStringToFile(logFile, appendMsg, "UTF-8", true);

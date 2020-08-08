@@ -10,6 +10,7 @@ import net.evecom.service.IDataSync;
 import net.evecom.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -31,6 +32,11 @@ public class CmpsEventDisLitigantInfoImpl extends BaseServiceImpl implements IDa
      */
     private static final Logger LOG = LoggerFactory.getLogger(CmpsEventDisLitigantInfoImpl.class);
 
+    @Value("${daysRangeEdge.eventDisLitigantInfo}")
+    private String daysRangeEdge;
+
+    @Value("${sysDebug.eventDisLitigantInfo}")
+    private boolean sysDebug;
     /**
      *  省网数据表名
      */
@@ -42,7 +48,11 @@ public class CmpsEventDisLitigantInfoImpl extends BaseServiceImpl implements IDa
     }
     @Override
     public String getFindSql() {
-        return "select * from S_PTZH_EDLI_V WHERE 1=1";
+        if (sysDebug){
+            return "select * from S_PTZH_EDLI_V WHERE 1=1";
+        }else {
+            return "select * from S_PTZH_EDLI_V WHERE 1=1 AND (TO_CHAR(ADD_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - " + daysRangeEdge + ", 'YYYY-MM-DD') OR TO_CHAR(UPDATE_TIME, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE - " + daysRangeEdge + ", 'YYYY-MM-DD'))";
+        }
     }
     @Override
     public Object[] getFindSqlParams() {
